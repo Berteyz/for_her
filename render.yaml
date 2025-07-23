@@ -1,6 +1,5 @@
 services:
   - type: web
     name: love-site
-    env: static
-    buildCommand: ""
-    staticPublishPath: "./public"
+    dockerfilePath: "./Dockerfile"  # Путь к Dockerfile
+    port: 80
