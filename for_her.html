@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Лерочки ❤️‍🔥</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebee;
+            color: #d32f2f;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .music-player {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .emoji {
+            position: fixed;
+            font-size: 24px;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        .heart-btn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .heart-btn:hover {
+            background-color: #b71c1c;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Для моей Лерочки ❤️‍🔥</h1>
+        <p>Этот сайт создан специально для тебя, чтобы напоминать о наших прекрасных моментах</p>
+        
+        <div class="gallery">
+            <!-- Фото из папки images -->
+            <img src="/images/photo1.jpg" alt="Наше фото 1">
+            <img src="/images/photo2.jpg" alt="Наше фото 2">
+            <img src="/images/photo3.jpg" alt="Наше фото 3">
+            <img src="/images/photo4.jpg" alt="Наше фото 4">
+        </div>
+        
+        <div class="music-player">
+            <h2>Наша песня</h2>
+            <audio controls>
+                <!-- Музыка из папки music -->
+                <source src="music/our_song.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает аудио элемент.
+            </audio>
+        </div>
+        
+        <button class="heart-btn" id="heartBtn">Нажми на меня ❤️</button>
+    </div>
+    
+    <script>
+        // Создаем дождь из смайлов
+        function createEmojiRain() {
+            const emojis = ['🤍', '❤️‍🔥'];
+            const emojiCount = 50;
+            
+            for (let i = 0; i < emojiCount; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.classList.add('emoji');
+                    emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    
+                    emoji.style.left = Math.random() * 100 + 'vw';
+                    emoji.style.animationDuration = 5 + Math.random() * 10 + 's';
+                    emoji.style.fontSize = (10 + Math.random() * 20) + 'px';
+                    emoji.style.animationDelay = Math.random() * 5 + 's';
+                    
+                    document.body.appendChild(emoji);
+                    
+                    setTimeout(() => {
+                        emoji.remove();
+                    }, 15000);
+                }, i * 300);
+            }
+        }
+        
+        window.onload = createEmojiRain;
+        
+        document.getElementById('heartBtn').addEventListener('click', function() {
+            createEmojiRain();
+            this.innerHTML = 'Я люблю тебя! ❤️‍🔥';
+            setTimeout(() => {
+                this.innerHTML = 'Нажми на меня ❤️';
+            }, 2000);
+        });
+        
+        setInterval(createEmojiRain, 15000);
+    </script>
+</body>
+</html>
