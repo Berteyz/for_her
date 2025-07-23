@@ -1,5 +1,5 @@
 services:
   - type: web
     name: love-site
-    dockerfilePath: "./Dockerfile"  # Путь к Dockerfile
-    port: 80
+    env: static
+    staticPublishPath: "./public"  # Обязательно с точкой в начале!
