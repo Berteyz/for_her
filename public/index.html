@@ -47,6 +47,10 @@
             margin: 40px 0;
         }
         
+        .gallery-item {
+            position: relative;
+        }
+        
         .gallery img {
             width: 100%;
             height: 200px;
@@ -55,11 +59,38 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
             transition: all 0.3s;
             border: 3px solid white;
+            cursor: pointer;
         }
         
         .gallery img:hover {
             transform: scale(1.08) rotate(2deg);
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        /* Счетчик сердечек */
+        .heart-counter {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #ff1493;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 20;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover .heart-counter {
+            opacity: 1;
+            transform: scale(1);
         }
         
         /* Музыкальный плеер */
@@ -177,6 +208,26 @@
             0% { background-position: 0 0; }
             100% { background-position: 1000px 1000px; }
         }
+        
+        /* Анимация клика */
+        .click-heart {
+            position: absolute;
+            font-size: 24px;
+            pointer-events: none;
+            animation: clickHeart 1s ease-out;
+            z-index: 30;
+        }
+        
+        @keyframes clickHeart {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3) translateY(-50px);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -191,26 +242,86 @@
         
         <div class="gallery">
             <!-- 20 фото -->
-            <img src="images/photo1.jpg" alt="Наше фото 1">
-            <img src="images/photo2.jpg" alt="Наше фото 2">
-            <img src="images/photo3.jpg" alt="Наше фото 3">
-            <img src="images/photo4.jpg" alt="Наше фото 4">
-            <img src="images/photo5.jpg" alt="Наше фото 5">
-            <img src="images/photo6.jpg" alt="Наше фото 6">
-            <img src="images/photo7.jpg" alt="Наше фото 7">
-            <img src="images/photo8.jpg" alt="Наше фото 8">
-            <img src="images/photo9.jpg" alt="Наше фото 9">
-            <img src="images/photo10.jpg" alt="Наше фото 10">
-            <img src="images/photo11.jpg" alt="Наше фото 11">
-            <img src="images/photo12.jpg" alt="Наше фото 12">
-            <img src="images/photo13.jpg" alt="Наше фото 13">
-            <img src="images/photo14.jpg" alt="Наше фото 14">
-            <img src="images/photo15.jpg" alt="Наше фото 15">
-            <img src="images/photo16.jpg" alt="Наше фото 16">
-            <img src="images/photo17.jpg" alt="Наше фото 17">
-            <img src="images/photo18.jpg" alt="Наше фото 18">
-            <img src="images/photo19.jpg" alt="Наше фото 19">
-            <img src="images/photo20.jpg" alt="Наше фото 20">
+            <div class="gallery-item">
+                <img src="images/photo1.jpg" alt="Наше фото 1">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo2.jpg" alt="Наше фото 2">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo3.jpg" alt="Наше фото 3">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo4.jpg" alt="Наше фото 4">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo5.jpg" alt="Наше фото 5">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo6.jpg" alt="Наше фото 6">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo7.jpg" alt="Наше фото 7">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo8.jpg" alt="Наше фото 8">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo9.jpg" alt="Наше фото 9">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo10.jpg" alt="Наше фото 10">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo11.jpg" alt="Наше фото 11">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo12.jpg" alt="Наше фото 12">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo13.jpg" alt="Наше фото 13">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo14.jpg" alt="Наше фото 14">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo15.jpg" alt="Наше фото 15">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo16.jpg" alt="Наше фото 16">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo17.jpg" alt="Наше фото 17">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo18.jpg" alt="Наше фото 18">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo19.jpg" alt="Наше фото 19">
+                <div class="heart-counter">0</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/photo20.jpg" alt="Наше фото 20">
+                <div class="heart-counter">0</div>
+            </div>
         </div>
         
         <div class="music-player">
@@ -281,6 +392,53 @@
             }
         }
         
+        // Создаем анимацию сердечка при клике
+        function createClickHeart(event) {
+            const heart = document.createElement('div');
+            heart.classList.add('click-heart');
+            heart.innerHTML = '❤️';
+            
+            heart.style.left = (event.clientX - 12) + 'px';
+            heart.style.top = (event.clientY - 12) + 'px';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 1000);
+        }
+        
+        // Обработчик клика на фотографии
+        function setupGalleryClick() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach(item => {
+                const img = item.querySelector('img');
+                const counter = item.querySelector('.heart-counter');
+                
+                img.addEventListener('click', function(e) {
+                    // Анимация сердечка
+                    createClickHeart(e);
+                    
+                    // Увеличиваем счетчик
+                    const currentCount = parseInt(counter.textContent);
+                    counter.textContent = currentCount + 1;
+                    
+                    // Анимация счетчика
+                    counter.style.transform = 'scale(1.5)';
+                    setTimeout(() => {
+                        counter.style.transform = 'scale(1)';
+                    }, 300);
+                    
+                    // Показываем счетчик, если он был скрыт
+                    counter.style.opacity = '1';
+                    
+                    // Создаем несколько сердечек вокруг фотографии
+                    createHearts(3, ['❤️', '💖', '💗']);
+                });
+            });
+        }
+        
         // Кнопки
         document.getElementById('heartBtn').addEventListener('click', function() {
             createEmojiRain(['💖', '❤️', '💗', '💓', '💞']);
@@ -322,6 +480,7 @@
             createHearts(10);
             setInterval(() => createHearts(5), 5000);
             setInterval(() => createEmojiRain(['💖', '❤️‍🔥'], 20), 10000);
+            setupGalleryClick();
             
             // Меняем фразы в сообщениях
             const messages = [
